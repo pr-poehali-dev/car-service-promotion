@@ -84,6 +84,45 @@ const Index = () => {
     }
   ];
 
+  const galleryItems = [
+    {
+      title: 'Ремонт двигателя BMW X5',
+      category: 'Двигатель',
+      image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800&auto=format',
+      description: 'Капитальный ремонт двигателя'
+    },
+    {
+      title: 'Полировка кузова Mercedes',
+      category: 'Детейлинг',
+      image: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&auto=format',
+      description: 'Полная полировка и защитное покрытие'
+    },
+    {
+      title: 'Замена подвески Audi',
+      category: 'Подвеска',
+      image: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&auto=format',
+      description: 'Замена стоек и амортизаторов'
+    },
+    {
+      title: 'Шиномонтаж премиум класса',
+      category: 'Шины',
+      image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format',
+      description: 'Установка и балансировка колёс'
+    },
+    {
+      title: 'Покраска крыла Toyota',
+      category: 'Кузовной ремонт',
+      image: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&auto=format',
+      description: 'Локальная покраска после ДТП'
+    },
+    {
+      title: 'Диагностика электроники',
+      category: 'Электрика',
+      image: 'https://images.unsplash.com/photo-1625047509168-a7026f36de04?w=800&auto=format',
+      description: 'Компьютерная диагностика систем'
+    }
+  ];
+
   const handleBooking = (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -271,6 +310,44 @@ const Index = () => {
                   </div>
                 </CardContent>
               </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-4 bg-muted/30">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-12 animate-fade-in">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Наши работы</h2>
+            <p className="text-lg text-muted-foreground">
+              Примеры выполненных работ — качество говорит само за себя
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {galleryItems.map((item, index) => (
+              <div 
+                key={item.title}
+                className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 animate-scale-in"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img 
+                    src={item.image} 
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <div className="inline-block px-3 py-1 bg-primary rounded-full text-xs font-semibold mb-2">
+                      {item.category}
+                    </div>
+                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                    <p className="text-white/90 text-sm">{item.description}</p>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
